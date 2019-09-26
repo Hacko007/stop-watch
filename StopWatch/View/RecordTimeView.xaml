@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="StopWatch.View.RecordTimeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Converters="clr-namespace:TimeRecording.Converters"
+             mc:Ignorable="d" 
+            >
+    <UserControl.Resources>
+        <Converters:BooleanToBackgroundConverter x:Key="BooleanToBackgroundConverter" />
+    </UserControl.Resources>
+    <Grid x:Name="MainGrid" Opacity="0.9" MouseDown="MainGrid_OnMouseDown" 
+          Background="{Binding Selected , Converter={StaticResource BooleanToBackgroundConverter}}">
+        <Grid.OpacityMask>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0E301A" Offset="0"/>
+                <GradientStop Color="#7F124B27" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.OpacityMask>
+        <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Orientation="Horizontal" >
+
+            <Label x:Name="TimeLabel" 
+                   Content="{Binding Time}" 
+                   ContentStringFormat="HH:mm:ss"
+                   Foreground="#FFC5D42C" 
+                   Margin="3,0,5,0" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" />
+            <Button x:Name="DeleteButton" Content="r" 
+                    FontFamily="Webdings" FontSize="10" 
+                    RenderTransformOrigin="0.5,0.5" 
+                    Command="{Binding DeleteCommandClick}"
+                    Height="15" 
+                    BorderBrush="#FF3C5740" 
+                    Foreground="#FF9FC53B" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FF98A49B" Offset="0.002"/>
+                        <GradientStop Color="#FF103218" Offset="0.5"/>
+                        <GradientStop Color="#FF1B1B1B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
+
+
+
+
+
+
+
